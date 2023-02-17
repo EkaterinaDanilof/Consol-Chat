@@ -1,31 +1,46 @@
 #include "registry_chat.h"
-#include <algorithm>
 #include <iostream>
-#include <locale.h> 
-#include <cstdlib>
-#include <string>;
-#include "chat_menu.h"
+//#include <locale.h> 
+//#include <cstdlib>
+#include <string>
+//#include "chat_menu.h"
 using namespace std;
 
-void registry_chat()
-{
-	cout << "Registry 2" << endl;
-	return ;
-}
 
-void registry_chat::reg_user()
+/*void registry_chat::reg_user()
 {
-	string login , password, name;
+
+	vector<registry_chat> users_;
+	string login, password, name;
 	cout << "enter your login: ";
 	cin >> login;
+
+	for (auto& user : users_)
+	{
+		if (login == user.getUserLogin())
+		{
+			throw LoginErr();
+		}
+	}
+
 	cout << "enter your password: ";
 	cin >> password;
+	if (size(password) < 8)
+	{
+		throw PassErr();
+	}
 	cout << "enter your name: ";
 	cin >> name;
+	for (auto& user : users_)
+	{
+		if (name == user.getUserName())
+		{
+			throw NameErr();
+		}
+	}
+	registry_chat* user = new registry_chat(login, password, name);
+	cout << "registration was successful!";
 
-	if (find(users_.begin(), users_.end(),login) != users_.end()) { throw LoginErr; }
-	if (find(users_.begin(), users_.end(), name) != users_.end()) { throw NameErr; }
-	if (lenght(password) < 8) { throw PassErr; }
-	registry_chat user = registry_chat(login, password, name);
-	users.push_back(user);
-}
+
+}*/
+
