@@ -1,16 +1,32 @@
-#include "registry_chat.h"
 #include <iostream>
-//#include <locale.h> 
-//#include <cstdlib>
-#include <string>
-//#include "chat_menu.h"
+#include "registry_chat.h"
 using namespace std;
 
 
-/*void registry_chat::reg_user()
+shared_ptr<registry_chat> registry_chat::getUserByLogin(const string& login) const
+{
+	for (auto& user : users_)
+	{
+		if (login == user.getUserLogin())
+			return make_shared<registry_chat>(user);
+	}
+	return nullptr;
+}
+
+shared_ptr<registry_chat> registry_chat::getUserByName(const string& name) const
+{
+	for (auto& user : users_)
+	{
+		if (name == user.getUserName())
+			return make_shared<registry_chat>(user);
+	}
+	return nullptr;
+}
+
+void registry_chat::reg_user()
 {
 
-	vector<registry_chat> users_;
+
 	string login, password, name;
 	cout << "enter your login: ";
 	cin >> login;
@@ -23,7 +39,8 @@ using namespace std;
 		}
 	}
 
-	cout << "enter your password: ";
+	cout << "password protection: enter at least 8 characters";
+	cout << "enter your password: " << endl;
 	cin >> password;
 	if (size(password) < 8)
 	{
@@ -38,9 +55,9 @@ using namespace std;
 			throw NameErr();
 		}
 	}
-	registry_chat* user = new registry_chat(login, password, name);
-	cout << "registration was successful!";
+	registry_chat user = registry_chat(login, password, name);
+	cout << "registration was successful!"<<endl;
+	users_.push_back(user);
+	currentUser_ = make_shared<registry_chat>(user);
 
-
-}*/
-
+}

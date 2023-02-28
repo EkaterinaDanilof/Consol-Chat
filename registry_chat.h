@@ -24,12 +24,13 @@ private:
 	const string login_;
 	string password_;
 	string name_;
-
+	vector<registry_chat> users_;
+	shared_ptr<registry_chat> currentUser_ = nullptr;
 public:
-	//vector<registry_chat> users_;
 	
+	registry_chat() {};
 	registry_chat(const string& login, const string& password, const string& name) : login_(login), password_(password), name_(name) {}
-	
+
 	const string& getUserLogin() const { return login_; }
 
 	const string getUserPassword() const { return password_; }
@@ -37,11 +38,11 @@ public:
 
 	const string getUserName() const { return name_; }
 	void setUserName(const string& name) { name_ = name; }
-
-
-	//void reg_user();
+	void reg_user();
+	shared_ptr<registry_chat> getUserByLogin(const string& login) const;
+	shared_ptr<registry_chat> getUserByName(const string& name) const;
+	
 
 };
-
 
 
